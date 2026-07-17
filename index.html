@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sila Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+--pink: #D6E8F7;
+--pink-2: #BFDDF4;
+--ink: #1B1B1B;
+--sub: #3a3a3a;
+--blue: #A9C7EA;
+--mint: #B7E4C7;
+--gold: #EFD08A;
+--lav: #CBB9E8;
+  }
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+margin:0;
+background:#FFFFFF;
+color:var(--ink);
+font-family:'Nunito', sans-serif;
+font-size:17px;
+line-height:1.6;
+  }
+.heading{
+font-family:'Baloo 2', sans-serif;
+font-weight:800;
+color:var(--ink);
+  }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 60px; }
+@media (max-width:700px){ .wrap{ padding:0 26px; } }
+a{ color:inherit; text-decoration:underline; text-decoration-color:rgba(27,27,27,0.35); text-underline-offset:3px; }
+a:hover{ text-decoration-color:var(--ink); }
+
+/* marker highlight under headings */
+.marker{
+position:relative;
+display:inline-block;
+  }
+.marker::after{
+content:'';
+position:absolute;
+left:2px; right:-4px; bottom:6px;
+height:0.42em;
+background:var(--pink-2);
+z-index:-1;
+border-radius:1px;
+  }
+
+/* ---------- NAV ---------- */
+.nav{
+display:flex; align-items:center; justify-content:space-between;
+padding:26px 60px 0;
+max-width:1180px; margin:0 auto;
+  }
+.nav-icon{
+font-family:'Baloo 2', sans-serif;
+font-weight:700;
+font-size:15px;
+letter-spacing:0.02em;
+text-decoration:none;
+line-height:1;
+transition:opacity .15s ease;
+display:inline-block;
+opacity:0.85;
+  }
+.nav-icon:hover{ opacity:1; }
+.nav-brand{
+font-family:'Baloo 2', sans-serif;
+font-weight:800;
+font-size:20px;
+text-decoration:none;
+  }
+.nav-right{ display:flex; gap:30px; }
+@media (max-width:700px){
+.nav{ padding:20px 26px 0; }
+.nav-icon{ font-size:13px; }
+.nav-brand{ font-size:17px; }
+.nav-right{ gap:18px; }
+  }
+
+/* ---------- HERO ---------- */
+.hero{ padding:70px 0 90px; }
+.hero h1{
+font-size:clamp(46px, 7vw, 84px);
+line-height:1.05;
+margin:0 0 34px;
+  }
+.hero p{
+max-width:840px;
+font-size:19px;
+color:var(--sub);
+margin:0 0 16px;
+  }
+.hero p:last-child{ margin-bottom:0; }
+
+/* ---------- SECTION BLOCKS ---------- */
+.block{ padding:60px 0 68px; }
+.block.pink{ background:var(--pink); }
+.block-head{
+display:flex; align-items:center; gap:14px;
+margin-bottom:40px;
+  }
+.block-head h2{
+font-size:clamp(30px, 4vw, 44px);
+margin:0;
+  }
+
+/* ---------- ENTRY LIST ---------- */
+.entry{
+padding:22px 0;
+  }
+.entry:first-child{ padding-top:0; }
+.entry:last-child{ padding-bottom:0; }
+.entry-top{
+display:flex; flex-wrap:wrap; align-items:baseline; gap:8px;
+justify-content:space-between;
+  }
+.entry-title{
+font-weight:700; font-size:19px;
+  }
+.entry-title .org{
+font-weight:600;
+text-decoration:underline;
+text-decoration-color:rgba(27,27,27,0.3);
+  }
+.entry-date{
+font-size:14.5px; color:#555; white-space:nowrap;
+font-weight:600;
+  }
+.entry p{
+font-style:normal;
+color:var(--sub);
+font-size:15.5px;
+margin:8px 0 0;
+max-width:900px;
+  }
+.entry ul{
+margin:10px 0 0;
+padding-left:20px;
+max-width:900px;
+  }
+.entry ul li{
+font-style:normal;
+color:var(--sub);
+font-size:15.5px;
+margin-bottom:6px;
+  }
+.entry ul li::marker{ color:var(--pink-2); }
+.entry .note-plain{
+font-style:normal;
+font-size:14px;
+color:#555;
+margin-top:10px;
+  }
+
+/* ---------- PHOTO ---------- */
+.photo{
+margin-top:22px;
+  }
+.photo img{
+width:100%;
+max-width:900px;
+display:block;
+border-radius:6px;
+  }
+.photo .caption{
+font-family:'Nunito', sans-serif;
+font-style:normal;
+font-size:13.5px;
+color:#555;
+margin-top:8px;
+  }
+
+/* ---------- ASK GRID ---------- */
+.ask-grid{
+display:grid; grid-template-columns:repeat(2,1fr); gap:0 60px;
+  }
+@media (max-width:760px){ .ask-grid{ grid-template-columns:1fr; } }
+
+/* ---------- CONTACT NOTE ---------- */
+.fill-note{
+display:inline-block; margin-top:6px;
+background:var(--gold); padding:2px 8px; border-radius:4px;
+font-size:13px; font-weight:700; font-style:normal;
+  }
+
+/* ---------- FOOTER ---------- */
+footer{
+padding:50px 0 40px;
+text-align:center;
+  }
+.social-row{
+display:flex; justify-content:center; gap:22px;
+margin-bottom:22px;
+  }
+.social-row a{
+font-family:'Baloo 2', sans-serif;
+font-weight:700; font-size:14px;
+text-decoration:none;
+opacity:0.8;
+  }
+.social-row a:hover{ opacity:1; }
+.copyright{
+font-size:14px; color:#555;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+<div class="wrap">
+<h1><span class="marker">The Sila<br>Initiative</span></h1>
+<p>Hi! We're Shrika, Saanvi, and Suhani, three high school students based in the Dallas–Fort Worth area building low-cost, high-efficiency air purifiers for remote Alaska Native communities, where wood-heat and wildfire smoke drive up indoor PM2.5 and commercial purifiers are expensive to ship in. We built a working Corsi–Rosenthal cube design with real-time particulate sensing and forecasting built in, and we're now raising funding to build and place more units.</p>
+<p>Please don't hesitate to reach out at <a href="mailto:silainitiative0@gmail.com">silainitiative0@gmail.com</a>. We'd love to talk grants, materials donations, or a community pilot partner in Alaska. Keep scrolling to see the build and where we're at!</p>
+</div>
+</header>
+
+<section class="block pink" id="build">
+<div class="wrap">
+<div class="block-head">
+<h2 class="marker">The Build</h2>
+</div>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">The Design <span class="org">Corsi–Rosenthal Cube Purifier</span></div>
+</div>
+<p>A Corsi–Rosenthal cube: MERV-13 furnace filters taped into a cube around a fan array, drawing room air through the filters on every side. It's a well-documented, open-source design with no proprietary parts, and simple enough to assemble at a community workshop, so replacement parts don't depend on a long freight chain. We're also building in a particulate sensor and microcontroller so each unit can track and forecast indoor PM2.5 in real time.</p>
+<div class="photo">
+<img src="purifier-photo.jpg" alt="Corsi–Rosenthal cube prototype with dual intake fans, MERV-13 filter panels, and an onboard sensor module">
+<div class="caption">Our working prototype: dual-fan cube with MERV-13 filter panels and a sensor module wired in.</div>
+</div>
+</div>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">Materials <span class="org">Some Materials Each Unit Uses</div>
+</div>
+<ul>
+<li>4 MERV-13 furnace filter/ True HEPA panels, 20"×20"</li>
+<li>2 PC fans for airflow</li>
+
+<li>PMS5003 particulate sensor</li>
+<li>ESP32 or Raspberry Pi Pico W running the forecasting model</li>
+<li>Red, Yellow, Green LEDs for status indication</li>
+<li>USB power cables and wall adapters</li>
+</ul>
+</div>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">Why Remote Alaska <span class="org">Indoor Air Quality</span></div>
+<div class="entry-date">Ongoing research</div>
+</div>
+<p>Many remote Alaska Native communities heat with wood or oil stoves in tightly sealed homes, and sit downwind of boreal wildfire smoke for days each season. Retail HEPA purifiers and their replacement filters are often costly and slow to arrive given freight distances, which is the gap this project is trying to close.</p>
+</div>
+</div>
+</section>
+
+<section class="block" id="partners">
+<div class="wrap">
+<div class="block-head">
+<h2 class="marker">Partnerships We're Pursuing</h2>
+</div>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">ANTHC</div>
+</div>
+<p>The Alaska Native Tribal Health Consortium is our top target for a clinical or community-health angle on indoor air quality, and a potential source for an on-the-ground pilot partner.</p>
+</div>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">Denali Commission</div>
+</div>
+<p>A federal-state agency focused on infrastructure and economic development in rural Alaska, and a natural fit for the freight, distribution, and community-access side of getting purifier kits into remote households.</p>
+</div>
+</div>
+</section>
+
+</body>
+</html>
