@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Sila Initiative</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23BFDDF4%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%231F4E7A%22%20stroke-width%3D%225.5%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M12%2022h26a7%207%200%201%200-7-7%22/%3E%3Cpath%20d%3D%22M12%2033h38%22/%3E%3Cpath%20d%3D%22M12%2044h22a7%207%200%201%201-7%207%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -33,6 +34,7 @@ font-family:'Baloo 2', sans-serif;
 font-weight:800;
 color:var(--ink);
   }
+h1, h2{ font-family:'Baloo 2', sans-serif; font-weight:800; }
 .wrap{ max-width:1180px; margin:0 auto; padding:0 60px; }
 @media (max-width:700px){ .wrap{ padding:0 26px; } }
 a{ color:inherit; text-decoration:underline; text-decoration-color:rgba(27,27,27,0.35); text-underline-offset:3px; }
@@ -42,6 +44,7 @@ a:hover{ text-decoration-color:var(--ink); }
 .marker{
 position:relative;
 display:inline-block;
+z-index:0;
   }
 .marker::after{
 content:'';
@@ -52,6 +55,7 @@ background:var(--pink-2);
 z-index:-1;
 border-radius:1px;
   }
+.block.pink .marker::after{ background:#FFFFFF; }
 
 /* ---------- NAV ---------- */
 .nav{
@@ -111,6 +115,13 @@ margin-bottom:40px;
 font-size:clamp(30px, 4vw, 44px);
 margin:0;
   }
+.sub-head{
+font-family:'Baloo 2', sans-serif;
+font-weight:700;
+font-size:22px;
+margin:44px 0 18px;
+  }
+.sub-head:first-of-type{ margin-top:0; }
 
 /* ---------- ENTRY LIST ---------- */
 .entry{
@@ -152,13 +163,64 @@ color:var(--sub);
 font-size:15.5px;
 margin-bottom:6px;
   }
-.entry ul li::marker{ color:var(--pink-2); }
+.entry ul li::marker{ color:var(--blue); }
 .entry .note-plain{
 font-style:normal;
 font-size:14px;
 color:#555;
 margin-top:10px;
   }
+
+/* ---------- IN THE NEWS ---------- */
+.news-intro{ max-width:840px; color:var(--sub); font-size:16px; margin:-18px 0 34px; }
+.news-grid{
+display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:28px;
+  }
+@media (max-width:420px){ .news-grid{ grid-template-columns:1fr; } }
+.news-card{
+display:flex; flex-direction:column;
+background:#FFFFFF;
+border:1px solid rgba(27,27,27,0.12);
+border-radius:8px;
+overflow:hidden;
+text-decoration:none;
+transition:transform .15s ease, box-shadow .15s ease;
+  }
+.news-card:hover{ transform:translateY(-2px); box-shadow:0 8px 22px rgba(27,27,27,0.08); }
+.clipping{
+background:#FBF8F1;
+padding:20px 22px 22px;
+border-bottom:1px solid rgba(27,27,27,0.12);
+  }
+.masthead{
+display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+border-bottom:3px double rgba(27,27,27,0.75);
+padding-bottom:6px; margin-bottom:12px;
+font-family:Georgia, 'Times New Roman', serif;
+  }
+.masthead .outlet{ font-weight:700; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; }
+.masthead .date{ font-size:12px; color:#555; white-space:nowrap; }
+.clipping h3{
+font-family:Georgia, 'Times New Roman', serif;
+font-weight:700;
+font-size:21px;
+line-height:1.25;
+margin:0 0 14px;
+color:var(--ink);
+  }
+.clipping .lines span{
+display:block; height:6px; background:rgba(27,27,27,0.1);
+border-radius:2px; margin-top:7px;
+  }
+.clipping .lines span:nth-child(2){ width:92%; }
+.clipping .lines span:nth-child(3){ width:68%; }
+.news-body{ padding:16px 22px 20px; display:flex; flex-direction:column; flex:1; }
+.news-body p{ margin:0 0 14px; font-size:15px; color:var(--sub); }
+.news-body .read{
+margin-top:auto;
+font-family:'Baloo 2', sans-serif; font-weight:700; font-size:15px;
+  }
+.block.pink .news-card{ border-color:rgba(27,27,27,0.08); }
 
 /* ---------- PHOTO ---------- */
 .photo{
@@ -184,7 +246,15 @@ display:grid; grid-template-columns:repeat(2,1fr); gap:0 60px;
   }
 @media (max-width:760px){ .ask-grid{ grid-template-columns:1fr; } }
 
-/* ---------- CONTACT NOTE ---------- */
+/* ---------- CONTACT ---------- */
+.contact-email{
+display:inline-block;
+font-family:'Baloo 2', sans-serif;
+font-weight:700;
+font-size:clamp(22px, 3vw, 30px);
+margin:6px 0 4px;
+word-break:break-word;
+  }
 .fill-note{
 display:inline-block; margin-top:6px;
 background:var(--gold); padding:2px 8px; border-radius:4px;
@@ -214,12 +284,22 @@ font-size:14px; color:#555;
 </head>
 <body>
 
+<nav class="nav">
+<a class="nav-brand" href="#top">Sila</a>
+<div class="nav-right">
+<a class="nav-icon" href="#build">Build</a>
+<a class="nav-icon" href="#news">News</a>
+<a class="nav-icon" href="#partners">Partners</a>
+<a class="nav-icon" href="#contact">Contact</a>
+</div>
+</nav>
+
 <header class="hero" id="top">
 <div class="wrap">
 <h1><span class="marker">The Sila<br>Initiative</span></h1>
-<p>We are Shrika and Suhani, 2 high school students based in the Dallas–Fort Worth area and founders of the Sila Initiative, a student-led effort to develop affordable, high-efficiency air purification systems for Native communities.</p>
-<p>Many indigenous communities experience elevated indoor concentrations of fine particulate matter (PM2.5) due to a combination of wildfire smoke, wood-burning stoves used for home heating, diesel generators, and other combustion-related sources. Prolonged exposure to PM2.5 has been linked to increased risks of asthma, cardiovascular disease, respiratory infections, and other serious health conditions. Because many of these communities are geographically isolated, commercial air purifiers are often expensive to purchase and ship, limiting access to effective indoor air filtration.</p>
-<p>To help address this challenge, we have designed a Corsi–Rosenthal cube integrated with real-time particulate matter sensing and air quality forecasting. Our goal is to provide an affordable, energy-efficient solution that can help reduce indoor PM2.5 exposure while remaining practical and accessible for remote communities.Keep scrolling to see the build and where we're at!</p>
+<p>We are Suhani and Shrika, two high school students from the Dallas–Fort Worth area and the founders of the Sila Initiative, a student-led project building affordable, high-efficiency air purification systems for Native communities.</p>
+<p>Many Indigenous communities experience elevated indoor concentrations of fine particulate matter (PM2.5) from wildfire smoke, wood-burning stoves used for home heating, diesel generators, and other combustion sources. Prolonged exposure to PM2.5 is linked to higher risks of asthma, cardiovascular disease, respiratory infections, and other serious health conditions. Because many of these communities are geographically isolated, commercial air purifiers are often expensive to buy and ship, limiting access to effective indoor air filtration.</p>
+<p>We've built a working Corsi–Rosenthal cube purifier, we're integrating real-time particulate sensing and air quality forecasting, and we're working alongside Homefront EJ Morro Bay and the Yukon-Kuskokwim Health Corporation. Keep scrolling to see the build!</p>
 </div>
 </header>
 
@@ -233,7 +313,7 @@ font-size:14px; color:#555;
 <div class="entry-top">
 <div class="entry-title">The Design <span class="org">Corsi–Rosenthal Cube Purifier</span></div>
 </div>
-<p>A Corsi–Rosenthal cube: MERV-13 furnace filters taped into a cube around a fan array, drawing room air through the filters on every side. It's a well-documented, open-source design with no proprietary parts, and simple enough to assemble at a community workshop, so replacement parts don't depend on a long freight chain. We're also building in a particulate sensor and microcontroller so each unit can track and forecast indoor PM2.5 in real time.</p>
+<p>A Corsi–Rosenthal cube: MERV-13 furnace filters made into a cube around a fan array, drawing room air through the filters on every side. It's a well-documented, open-source design with no proprietary parts, and simple enough to assemble at a community workshop, so replacement parts don't depend on a long freight chain. Each unit also carries a particulate sensor and microcontroller so it can track and forecast indoor PM2.5 in real time, entirely on the device, so it keeps working in homes with limited or no internet.</p>
 <div class="photo">
 <img src="purifier-photo.jpg" alt="Corsi–Rosenthal cube prototype with dual intake fans, MERV-13 filter panels, and an onboard sensor module">
 <div class="caption">Our working prototype: dual-fan cube with MERV-13 filter panels and a sensor module wired in.</div>
@@ -242,15 +322,14 @@ font-size:14px; color:#555;
 
 <div class="entry">
 <div class="entry-top">
-<div class="entry-title">Materials <span class="org">Some Materials Each Unit Uses</div>
+<div class="entry-title">Materials <span class="org">What Each Unit Uses</span></div>
 </div>
 <ul>
-<li>4 MERV-13 furnace filter/ True HEPA panels, 20"×20"</li>
+<li>4 MERV-13 furnace filter / True HEPA panels, 20"×20"</li>
 <li>2 PC fans for airflow</li>
-
 <li>PMS5003 particulate sensor</li>
 <li>ESP32 or Raspberry Pi Pico W running the forecasting model</li>
-<li>Red, Yellow, Green LEDs for status indication</li>
+<li>Red, yellow, and green LEDs for status indication</li>
 <li>USB power cables and wall adapters</li>
 </ul>
 </div>
@@ -258,26 +337,114 @@ font-size:14px; color:#555;
 <div class="entry">
 <div class="entry-top">
 <div class="entry-title">Why Alaska &amp; California <span class="org">Indoor Air Quality</span></div>
-<div class="entry-date">Ongoing research</div>
+<div class="entry-date"></div>
 </div>
 <p>Many remote Alaska Native communities face persistent indoor air quality challenges due to a combination of wildfire smoke, wood-burning stoves, diesel generators, and other combustion-related sources. These pollutants produce fine particulate matter (PM2.5), which can penetrate deep into the lungs and bloodstream. Between 2003 and 2020, Alaskans experienced nearly 78 million person-days of unhealthy wildfire smoke exposure, including more than 14 million person-days of dense smoke exposure. During severe wildfire seasons, up to 98% of Alaska census tracts experienced at least one day of moderate smoke, while some Interior Alaska communities endured smoke events lasting more than 40 consecutive days.</p>
 <p>California's tribal communities face a similar burden. As wildfires grow more frequent and intense, smoke seasons increasingly stretch across weeks or months. A 2024 study in the Proceedings of the National Academy of Sciences found that from 2006 to 2020, California's Native American communities were exposed to roughly 1.7 times more wildfire smoke than their share of the state's population would predict. Many of these communities are rural and far from major retailers, which leaves few options for clean indoor air when smoke settles in.</p>
-<p>Exposure to PM2.5 is linked to increased risks of asthma, chronic obstructive pulmonary disease (COPD), heart disease, stroke, respiratory infections, and premature death. Despite these growing challenges, commercial HEPA air purifiers and replacement filters are often prohibitively expensive and difficult to obtain in remote villages and rural tribal lands, where high costs and long shipping times put them out of reach. The Sila Initiative aims to bridge this gap by developing an affordable, high-efficiency air purification system that is practical, accessible, and sustainable for the communities that need it most.</p>
+<p>Exposure to PM2.5 is linked to increased risks of asthma, chronic obstructive pulmonary disease (COPD), heart disease, stroke, respiratory infections, and premature death. Despite these growing challenges, commercial HEPA air purifiers and replacement filters are often prohibitively expensive and difficult to obtain in remote villages and rural tribal lands, where high costs and long shipping times put them out of reach. The Sila Initiative is working to close this gap with an affordable, high-efficiency air purification system that is practical, accessible, and sustainable for the communities that need it most.</p>
 </div>
 </div>
+</section>
 
-
-<section class="block" id="partners">
+<section class="block" id="news">
 <div class="wrap">
 <div class="block-head">
-<h2 class="marker">Partnerships We're Pursuing</h2>
+<h2 class="marker">In the News</h2>
 </div>
+<p class="news-intro">Reporting and research on wildfire smoke and indoor air in Alaska Native and California tribal communities, and on the purifier design Sila is built around.</p>
+<div class="news-grid">
+<a class="news-card" href="https://www.kyuk.org/public-safety/2022-07-01/with-no-sustained-rain-in-forecast-theres-no-end-in-sight-for-when-the-smoke-will-clear-from-upper-kuskokwim-river-communities" target="_blank" rel="noopener">
+<div class="clipping">
+<div class="masthead"><span class="outlet">KYUK</span><span class="date">July 1, 2022</span></div>
+<h3>With no sustained rain in forecast, there&rsquo;s no end in sight for when the smoke will clear from upper Kuskokwim River communities</h3>
+<div class="lines"><span></span><span></span><span></span></div>
+</div>
+<div class="news-body">
+<p>Lightning-sparked fires blanketed upper Kuskokwim villages in heavy smoke, with elders reporting irritated throats and some communities handing out leftover COVID and mold-cleanup masks.</p>
+<span class="read">Read the article &rarr;</span>
+</div>
+</a>
+
+<a class="news-card" href="https://alaskapublic.org/news/alaska-desk/2025-06-16/smoke-from-canadian-wildfires-pours-into-eastern-alaska" target="_blank" rel="noopener">
+<div class="clipping">
+<div class="masthead"><span class="outlet">Alaska Public Media</span><span class="date">June 16, 2025</span></div>
+<h3>Smoke from Canadian wildfires pours into eastern Alaska</h3>
+<div class="lines"><span></span><span></span><span></span></div>
+</div>
+<div class="news-body">
+<p>Smoke from British Columbia fires degraded air across the Interior and panhandle. Vulnerable residents were told to stay indoors, which is hard during a heat wave with little air conditioning.</p>
+<span class="read">Read the article &rarr;</span>
+</div>
+</a>
+
+<a class="news-card" href="https://vcresearch.berkeley.edu/news/wildfire-smoke-disproportionately-affects-californias-indigenous-communities-new-research" target="_blank" rel="noopener">
+<div class="clipping">
+<div class="masthead"><span class="outlet">UC Berkeley Research</span><span class="date">Feb 29, 2024</span></div>
+<h3>Wildfire Smoke Disproportionately Affects California&rsquo;s Indigenous Communities, New Research Shows</h3>
+<div class="lines"><span></span><span></span><span></span></div>
+</div>
+<div class="news-body">
+<p>A PNAS study found Indigenous communities in California breathed more wildfire smoke than their population share would predict in every year from 2006 to 2020.</p>
+<span class="read">Read the article &rarr;</span>
+</div>
+</a>
+
+<a class="news-card" href="https://www.investigatewest.org/alaskan-wildfire-smoke-causes-unhealthy-air-quality" target="_blank" rel="noopener">
+<div class="clipping">
+<div class="masthead"><span class="outlet">InvestigateWest</span><span class="date">July 31, 2009</span></div>
+<h3>Alaskan wildfire smoke causes unhealthy air quality</h3>
+<div class="lines"><span></span><span></span><span></span></div>
+</div>
+<div class="news-body">
+<p>Interior fires pushed Fairbanks into an unhealthy air advisory, a reminder that Alaska&rsquo;s smoke seasons have been a recurring health problem for well over a decade.</p>
+<span class="read">Read the article &rarr;</span>
+</div>
+</a>
+
+<a class="news-card" href="https://engineering.ucdavis.edu/news/dean-richard-l-corsi-presents-air-filtration-research-acs" target="_blank" rel="noopener">
+<div class="clipping">
+<div class="masthead"><span class="outlet">UC Davis Engineering</span><span class="date">Mar 24, 2025</span></div>
+<h3>Dean Richard L. Corsi Presents Air Filtration Research at ACS</h3>
+<div class="lines"><span></span><span></span><span></span></div>
+</div>
+<div class="news-body">
+<p>In roughly 2,500 hours of testing, Corsi–Rosenthal boxes, the design Sila builds on, matched or beat comparable HEPA purifiers at cleaning indoor air.</p>
+<span class="read">Read the article &rarr;</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<section class="block pink" id="partners">
+<div class="wrap">
+<div class="block-head">
+<h2 class="marker">Partners</h2>
+</div>
+
+<h3 class="sub-head">Working With</h3>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">Homefront EJ Morro Bay</div>
+</div>
+<p>An environmental justice organization on California's Central Coast that is supporting Sila with guidance and community connections as we move toward pilots.</p>
+</div>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">Yukon-Kuskokwim Health Corporation (YKHC)</div>
+</div>
+<p>A tribal health organization serving communities across the Yukon-Kuskokwim Delta in Western Alaska. We're working with YKHC to understand indoor air needs in the region and how Sila units could support local households.</p>
+</div>
+
+<h3 class="sub-head">In Conversation With</h3>
 
 <div class="entry">
 <div class="entry-top">
 <div class="entry-title">ANTHC</div>
 </div>
-<p>The Alaska Native Tribal Health Consortium is our top priority for a clinical and community-health perspective on indoor air quality, and a potential connection to an on-the-ground pilot partner.</p>
+<p>The Alaska Native Tribal Health Consortium, for a clinical and community-health perspective on indoor air quality and a potential on-the-ground pilot partner.</p>
 </div>
 
 <div class="entry">
@@ -302,6 +469,47 @@ font-size:14px; color:#555;
 </div>
 </div>
 </section>
+
+<section class="block" id="contact">
+<div class="wrap">
+<div class="block-head">
+<h2 class="marker">Get In Touch</h2>
+</div>
+
+<div class="ask-grid">
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">Contact Us</div>
+</div>
+<p>Whether you're a tribal organization, health provider, funder, or fellow builder, we'd love to hear from you.</p>
+<a class="contact-email" href="mailto:YOUR-EMAIL@example.com">YOUR-EMAIL@example.com</a>
+</div>
+
+<div class="entry">
+<div class="entry-top">
+<div class="entry-title">Ways to Help</div>
+</div>
+<ul>
+<li>Connect us with communities or households that could pilot a unit</li>
+<li>Fund purifier kits, filters, or a community build workshop</li>
+<li>Share expertise in air quality, public health, or rural logistics</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div class="social-row">
+<a href="#top">Top</a>
+<a href="#build">Build</a>
+<a href="#partners">Partners</a>
+<a href="mailto:YOUR-EMAIL@example.com">Email</a>
+</div>
+<div class="copyright">&copy; 2026 The Sila Initiative &middot; Shrika &amp; Suhani</div>
+</div>
+</footer>
 
 </body>
 </html>
